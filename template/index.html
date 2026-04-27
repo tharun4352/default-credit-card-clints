@@ -1,0 +1,77 @@
+html_code = """<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Evaluation Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🚗 Car Evaluation Predictor</h1>
+    <p>Enter car details to predict its evaluation</p>
+
+    <form action="/predict" method="post">
+
+        <select name="buying" required>
+            <option value="">Buying Price</option>
+            <option value="vhigh">Very High</option>
+            <option value="high">High</option>
+            <option value="med">Medium</option>
+            <option value="low">Low</option>
+        </select>
+
+        <select name="maint" required>
+            <option value="">Maintenance Cost</option>
+            <option value="vhigh">Very High</option>
+            <option value="high">High</option>
+            <option value="med">Medium</option>
+            <option value="low">Low</option>
+        </select>
+
+        <select name="doors" required>
+            <option value="">Doors</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5more">5 or more</option>
+        </select>
+
+        <select name="persons" required>
+            <option value="">Persons Capacity</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="more">More</option>
+        </select>
+
+        <select name="lug_boot" required>
+            <option value="">Luggage Boot</option>
+            <option value="small">Small</option>
+            <option value="med">Medium</option>
+            <option value="big">Big</option>
+        </select>
+
+        <select name="safety" required>
+            <option value="">Safety</option>
+            <option value="low">Low</option>
+            <option value="med">Medium</option>
+            <option value="high">High</option>
+        </select>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
+"""
+
+with open("templates/index.html", "w") as f:
+    f.write(html_code)
